@@ -24,15 +24,16 @@ const AddProduct = ({ close, onSubmit, onChange, onChangePhoto, name, vname, bra
                     <div className="card p-4 my-3 bg-white rounded-xl border-2">
                         <p id='Light' className='text-xs text-gray-500'>Choose Category</p>
                         <select name={category} value={vcategory} onChange={onChange} id="" className='outline-none w-full'>
-                            <option value="">Choose Category</option>
-                            <option value="Shirt">Shirt</option>
-                            <option value="Jacket">Jacket</option>
-                            <option value="Pants">Pants</option>
-                            <option value="Shoes">Shoes</option>
-                            <option value="Short">Short</option>
-                            <option value="Accesories">Accesories</option>
-                            <option value="Electronic">Electronic</option>
-                            <option value="Watch">Watch</option>
+                                <option value="">Choose Category</option>
+                                <option value="Jacket">Jacket</option>
+                                <option value="Pants">Pants</option>
+                                <option value="Shoes">Shoes</option>
+                                <option value="Short">Short</option>
+                                <option value="Shirt">Shirt</option>
+                                <option value="Hat">Hat</option>
+                                <option value="Accesories">Accesories</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Music">Music</option>
                         </select>
                     </div>
                     <div className="card p-4 my-3 bg-white rounded-xl border-2">
@@ -94,14 +95,15 @@ const AddProduct = ({ close, onSubmit, onChange, onChangePhoto, name, vname, bra
                                 <p id='Light' className='text-xs text-gray-500'>Choose Category</p>
                                 <select name={category} value={vcategory} onChange={onChange} id="" className='outline-none w-full'>
                                     <option value="">Choose Category</option>
-                                    <option value="Shirt">Shirt</option>
                                     <option value="Jacket">Jacket</option>
                                     <option value="Pants">Pants</option>
                                     <option value="Shoes">Shoes</option>
                                     <option value="Short">Short</option>
+                                    <option value="Shirt">Shirt</option>
+                                    <option value="Hat">Hat</option>
                                     <option value="Accesories">Accesories</option>
                                     <option value="Electronic">Electronic</option>
-                                    <option value="Watch">Watch</option>
+                                    <option value="Music">Music</option>
                                 </select>
                             </div>
                             <div className="card p-4 my-3 bg-white rounded-xl border-2">
