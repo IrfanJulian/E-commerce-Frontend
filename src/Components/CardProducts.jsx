@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardProducts = ({ onClick, image, tittle, brand, price, stock, deleteProduct }) => {
+const CardProducts = ({ onClick, image, tittle, brand, price, stock }) => {
   return (
-    <div onClick={onClick} className='grid relative -z-10 border-2 rounded-xl shadow-lg transition-all duration-100 hover:scale-105 cursor-pointer'>
+    <div onClick={onClick} className='grid relative border-2 rounded-xl shadow-lg transition-all duration-100 hover:scale-105 cursor-pointer'>
       <div className="flex space-x-3 absolute top-3 right-3">
       </div>
         <div className="h-1/2">
