@@ -27,7 +27,7 @@ const Search = () => {
             setLoading(false);
         }
         getProduct();
-    }, [search])
+    }, [search]);
 
   return (
     <div>
@@ -35,7 +35,7 @@ const Search = () => {
         <div className="wrapper w-10/12 mx-auto p-10">
             <p id='SemiBold' className='text-3xl'>Search</p>
                 <p id='Light' className='mb-10 text-gray-400 text-xl'>Result for {search}</p>
-                <div className="products categories grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-10">
+                <div className="products categories grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-10">
                     { data ? data.map((item)=>
                         <CardProducts key={item.id} onClick={()=>navigate(`/product-detail/${item.id}`)}
                         image={item.photo} tittle={item.name} brand={item.brand} price={item.price} stock={item.stock}

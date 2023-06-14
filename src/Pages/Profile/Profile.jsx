@@ -84,6 +84,7 @@ const Profile = () => {
         getData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    console.log(data);
 
     useEffect(() => {
         const getDataAddress = async() => {
@@ -126,7 +127,7 @@ const Profile = () => {
         }
     }, [email, role])
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async() => {
         setLoading(true);
         try {
             await axios({
@@ -145,7 +146,7 @@ const Profile = () => {
                 title: 'Success',
                 text: 'Your profile updated'
               })
-              window.location.reload();
+            //   window.location.reload();
               setForm("");
         } catch (error) {
             Swal.fire({

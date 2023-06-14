@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const Detail = () => {
 
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
     const {id:idProduct} = useParams();
     const idUser = localStorage.getItem('id');
     const [confirm, setConfirm] = useState(false);
@@ -55,31 +56,40 @@ const Detail = () => {
     const addBag = async(e) => {
         setLoading(true);
         e.preventDefault();
-        try {
-            await axios({
-                method: "POST",
-                url: `${process.env.REACT_APP_URL}/bag/add-bag`,
-                data: {
-                    id_customer: idUser,
-                    id_seller: data.id_seller,
-                    id_product: idProduct,
-                    quantity: qty
-                }
-            })
-            setLoading(false);
-            setConfirm(false);
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'The item has been add to your bag!'
+        if (token) {      
+            try {
+                await axios({
+                    method: "POST",
+                    url: `${process.env.REACT_APP_URL}/bag/add-bag`,
+                    data: {
+                        id_customer: idUser,
+                        id_seller: data.id_seller,
+                        id_product: idProduct,
+                        quantity: qty
+                    }
                 })
-        } catch (error) {
+                setLoading(false);
+                setConfirm(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'The item has been add to your bag!'
+                    })
+            } catch (error) {
+                setLoading(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!'
+                  })
+            }
+        } else {
             setLoading(false);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!'
-              })
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Login for add this item to cart'
+                  })
         }
     }
 

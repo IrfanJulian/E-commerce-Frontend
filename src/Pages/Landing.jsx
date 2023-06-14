@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import Filter from '../Components/Filter'
 import axios from 'axios'
 import Loading from '../Components/Loading'
+import Category from '../Components/Category'
 
 const Landing = () => {
 
@@ -15,6 +16,7 @@ const Landing = () => {
     const [filter, setfilter] = useState(false);
     const [data, setData] = useState();
     const [search, setSearch] = useState('');
+    const [chooseCategory, SetChooseCategory] = useState();
 
     useEffect(()=>{
         setLoading(true)
@@ -45,12 +47,12 @@ const Landing = () => {
                     <p id='SemiBold' className='text-3xl'>Categries</p>
                     <p id='Light' className='mb-10 text-gray-400 text-xl'>What are you current looking for.....</p>
                     <div className="categories grid xl:grid-cols-6 md:grid-cols-4 gap-10">
-                        <CardCategory image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342008/Assets%20Blanja/jacket_rz5y3l.jpg"} />
-                        <CardCategory image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/pants_qg1qjl.jpg"} />
-                        <CardCategory image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/shoes_bc49mx.jpg"} />
-                        <CardCategory image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/short_dw8t6d.jpg"} />
-                        <CardCategory image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/Shirt_djbbwz.jpg"} />
-                        <button className='transition-all duration-500 hover:scale-110 hover:text-gray-500 text-gray-400'>
+                        <CardCategory onClick={()=>navigate(`/category/Jacket`)} image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342008/Assets%20Blanja/jacket_rz5y3l.jpg"} />
+                        <CardCategory onClick={()=>navigate(`/category/Pants`)} image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/pants_qg1qjl.jpg"} />
+                        <CardCategory onClick={()=>navigate(`/category/Shoes`)} image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/shoes_bc49mx.jpg"} />
+                        <CardCategory onClick={()=>navigate(`/category/Short`)} image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/short_dw8t6d.jpg"} />
+                        <CardCategory onClick={()=>navigate(`/category/Shirt`)} image={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1681342007/Assets%20Blanja/Shirt_djbbwz.jpg"} />
+                        <button onClick={()=>SetChooseCategory(true)} className='transition-all duration-500 hover:scale-110 hover:text-gray-500 text-gray-400'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 xl:w-32 xl:h-32 mx-auto">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -91,7 +93,7 @@ const Landing = () => {
 
             {/* Mobile */}
             <div className="w-full md:hidden px-5 pb-24">
-                <button id='Medium' className='text-lg flex my-5'>
+                <button onClick={()=>SetChooseCategory(true)} id='Medium' className='text-lg flex my-5'>
                     <p>Choose Categories</p>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 my-auto ml-3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
@@ -127,6 +129,9 @@ const Landing = () => {
             </div>
             { filter === true ? <Filter onClick1={()=>setfilter(false)} onClick3={()=>setfilter(false)} /> : null }
         </div>
+        { chooseCategory === true ? 
+        <Category close={()=>SetChooseCategory(false)} cancel={()=>SetChooseCategory(false)} onClick1={()=>navigate(`/category/Jacket`)} onClick2={()=>navigate(`/category/Pants`)} onClick3={()=>navigate(`/category/Shoes`)} onClick4={()=>navigate(`/category/Short`)} onClick5={()=>navigate(`/category/Shirt`)} onClick6={()=>navigate(`/category/Hat`)} onClick7={()=>navigate(`/category/Accesorries`)} onClick8={()=>navigate(`/category/Electronic`)} onClick9={()=>navigate(`/category/Music`)} /> 
+        : null }
         { loading === true ? <Loading /> : null }
     </div>
   )

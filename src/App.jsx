@@ -13,6 +13,7 @@ import MyProduct from './Pages/Profile/MyProduct';
 import MyOrder from './Pages/Profile/MyOrder';
 import Order from './Pages/Transactions/Order';
 import Search from './Pages/Products/Search';
+import Category from './Pages/Products/Category';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/:search' element={<Search />} />
+          <Route path='/category/:category' element={<Category />} />
           <Route path='/auth-login' element={<Login />} />
           <Route path='/auth-register' element={<Register />} />
           <Route path='/auth-verification-otp/:email' element={<Verify />} />
