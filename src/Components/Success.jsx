@@ -6,7 +6,7 @@ const Success = () => {
     const navigate = useNavigate();
 
   return (
-    <div className='fixed top-0 left-0 w-screen grid h-screen bg-white'>
+    <div className='fixed top-0 left-0 w-screen pb-16 grid h-screen bg-white'>
         <div className="w-3/4 h-max mt-auto mx-auto">
             <img src={"https://res.cloudinary.com/ddpo9zxts/image/upload/v1682528338/success_gmv3ln.png"} className='mx-auto' alt="" />
             <p className='text-2xl mt-3 text-center' id='SemiBold'>Success!</p>

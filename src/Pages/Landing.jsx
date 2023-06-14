@@ -14,6 +14,8 @@ const Landing = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [filter, setfilter] = useState(false);
+    const [page, setPage] = useState(1);
+    const [pagination, setPagination] = useState(1);
     const [data, setData] = useState();
     const [search, setSearch] = useState('');
     const [chooseCategory, SetChooseCategory] = useState();
@@ -24,16 +26,24 @@ const Landing = () => {
             try {
                 const res = await axios({
                     method: "GET",
-                    url: `${process.env.REACT_APP_URL}/product`
+                    url: `${process.env.REACT_APP_URL}/product?page=${page}`
                 })
                 setData(res.data.data);
+                setPagination(res.data.pagination);
             } catch (error) {
                 
             }
             setLoading(false);
         }
         getProduct();
-    }, [])
+    }, [page]);
+    
+    const next = async() => {
+        setPage((current)=>current + 1)
+      }
+      const prev = () => {
+        setPage((current)=>current - 1)
+      }
 
   return (
     <div>
@@ -66,7 +76,7 @@ const Landing = () => {
                 <div className="Products mt-20">
                     <p id='SemiBold' className='text-3xl'>New</p>
                     <p id='Light' className='mb-10 text-gray-400 text-xl'>You've never seen it before.....</p>
-                    <div className="products categories grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-10">
+                    <div className="products categories grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 gap-10">
                         { data ? data.map((item)=>
                             <CardProducts key={item.id} onClick={()=>navigate(`/product-detail/${item.id}`)}
                             image={item.photo} tittle={item.name} brand={item.brand} price={item.price} stock={item.stock}
@@ -75,13 +85,13 @@ const Landing = () => {
                         : null }
                     </div>
                     <div className="pagination flex mt-20 mb-10">
-                        <button className='ml-auto mr-10 transition-all duration-300 hover:text-red-500 hover:scale-110'>
+                        <button onClick={()=>setPage(pagination.currentPage - 1)} disabled={pagination && pagination.currentPage <= 1 ? true : false} className='ml-auto mr-10 transition-all duration-300 hover:text-red-500 hover:scale-110'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                             </svg>
                         </button>
-                        <p className='text-xl' id='Medium'>1 / 12</p>
-                        <button className='mr-auto ml-10 transition-all duration-300 hover:text-red-500 hover:scale-110'>
+                        <p className='text-xl' id='Medium'>{page} / {pagination ? pagination.totalPage : null}</p>
+                        <button onClick={()=>setPage(pagination.currentPage + 1)} disabled={pagination && pagination.currentPage >= pagination.totalPage ? true : false} className='mr-auto ml-10 transition-all duration-300 hover:text-red-500 hover:scale-110'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                             </svg>
@@ -114,13 +124,13 @@ const Landing = () => {
                     }
                 </div>
                 <div className="pagination flex mt-5">
-                    <button className='ml-auto mr-10'>
+                    <button onClick={prev} disabled={pagination && pagination.currentPage <= 1 ? true : false} className='ml-auto mr-10'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <p className='text-md' id='Medium'>1 / 12</p>
-                    <button className='mr-auto ml-10'>
+                    <p className='text-md' id='Medium'>{pagination.currentPage} / {pagination.totalPage}</p>
+                    <button onClick={next} disabled={pagination && pagination.currentPage >= pagination.totalPage ? true : false} className='mr-auto ml-10'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>

@@ -180,7 +180,6 @@ const Checkout = () => {
             Swal.fire('Please choose payment method')
         }
     }
-    console.log(loading);
 
   return (
     <div>

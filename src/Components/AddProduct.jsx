@@ -4,7 +4,7 @@ const AddProduct = ({ close, onSubmit, onChange, onChangePhoto, name, vname, bra
   return (
     <div>
         {/* Mobile */}
-        <div className='absolute top-0 left-0 h-full w-screen block lg:hidden bg-white p-5' id='Light'>
+        <div className='fixed overflow-auto top-0 left-0 h-full w-screen block lg:hidden bg-white p-5' id='Light'>
             <button onClick={close}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
