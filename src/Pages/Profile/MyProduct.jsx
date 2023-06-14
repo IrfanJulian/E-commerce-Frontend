@@ -75,7 +75,7 @@ const MyProduct = () => {
                 text: 'Your product uploaded.'
               })
               setForm("");
-              window.location.reload();
+            //   window.location.reload();
         } catch (error) {
             setLoading(false);
             Swal.fire({
@@ -111,7 +111,7 @@ const MyProduct = () => {
                     )
                 }
               })
-              window.location.reload();
+            //   window.location.reload();
         } catch (error) {
             console.log(error);
         }

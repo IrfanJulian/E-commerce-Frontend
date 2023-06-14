@@ -170,7 +170,7 @@ const Profile = () => {
                 data: formData
             })
             setLoading(false);
-            window.location.reload();
+            // window.location.reload();
             Swal.fire(
                 'Success!',
                 'Your photo has been changed.',
@@ -199,7 +199,7 @@ const Profile = () => {
                     }
                 })
                 setForm('')
-                window.location.reload();
+                // window.location.reload();
                 setLoading(false);
                 Swal.fire({
                     icon: 'success',
@@ -236,7 +236,7 @@ const Profile = () => {
                         method: 'DELETE',
                         url: `${process.env.REACT_APP_URL}/user/delete-address/${id}`
                     })
-                    window.location.reload();
+                    // window.location.reload();
                     setLoading(false);
                   Swal.fire(
                     'Deleted!',
@@ -265,7 +265,7 @@ const Profile = () => {
                     method: "PUT",
                     url: `${process.env.REACT_APP_URL}/checkout/delievery/${id}`
                 })
-                window.location.reload();
+                // window.location.reload();
                 setLoading(false);
               Swal.fire(
                 'Success!',
@@ -372,7 +372,7 @@ const Profile = () => {
                 text: 'Your product uploaded.'
               })
               setForm("");
-              window.location.reload();
+            //   window.location.reload();
         } catch (error) {
             setLoading(false);
             Swal.fire({

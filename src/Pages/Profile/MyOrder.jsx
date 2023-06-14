@@ -53,7 +53,7 @@ const MyOrder = () => {
                     method: "PUT",
                     url: `${process.env.REACT_APP_URL}/checkout/delievery/${id}`
                 })
-                window.location.reload();
+                // window.location.reload();
                 setLoading(false);
               Swal.fire(
                 'Success!',

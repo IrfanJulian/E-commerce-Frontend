@@ -103,7 +103,7 @@ const Register = () => {
                     <input name='password2' onChange={(e)=>setPassword(e.target.value)} type={showPass2 === false ? "password" : "text"} className='w-10/12 border-l-2 border-t-2 border-b-2 rounded-tl-md rounded-bl-md py-2 pl-4 outline-none' placeholder='Confirmation your password' />
                     <button type='button' onClick={()=>showPass2 === false ? setShowPass2(true) : setShowPass2(false)} className='align-center border-r-2 border-t-2 border-b-2 px-4 rounded-tr-md rounded-br-md'>{ showPass2 === false ? "Show" : "Hide" }</button>
                 </div>
-                <button type='submit' className='w-full mx-auto bg-red-500 text-white rounded-full py-2 font-bold hover:opacity-80'>Login</button>
+                <button type='submit' className='w-full mx-auto bg-red-500 text-white rounded-full py-2 font-bold hover:opacity-80'>Register</button>
             </form>
             <p className='text-center text-lg mt-10' id='Light'>Already have an account? <span onClick={()=>navigate('/auth-login')} className='font-semibold text-red-500 cursor-pointer hover:opacity-60'>Login here!</span></p>
         </div>

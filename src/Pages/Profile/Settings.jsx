@@ -62,7 +62,7 @@ const Settings = () => {
                 title: 'Success',
                 text: 'Your password has been changed'
               })
-              window.location.reload();
+            //   window.location.reload();
         } catch (error) {
             setLoading(false);
             Swal.fire({
@@ -129,7 +129,7 @@ const Settings = () => {
                 title: 'Success',
                 text: 'Your profile updated'
               })
-              window.location.reload();
+            //   window.location.reload();
               setForm("");
         } catch (error) {
             setLoading(false);
